@@ -1,25 +1,45 @@
-const express=require('express');
-const mongoose=require('mongoose');
-const morgan=require('morgan');
-const bodyParser=require('body-parser');
-require('dotenv').config();
-const cors=require('cors');
+import express from 'express';
+import mongoose from 'mongoose';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import errorHandler from './middleware/error.js';
 const app=express();
 
-
+dotenv.config();
 
 //Database Connection
-mongoose.connect(process.env.MONGODB_URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-    useCreateIndex:true,
-    useFindAndModify:false
-}).then(()=>console.log("Database Connected"))
+mongoose.connect(process.env.MONGODB_URL)
+.then(()=>console.log("Database Connected"))
 .catch((err)=>console.log(err))
 
+//Middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+   cors(
+  //{
+  //   origin: [process.env.FRONTEND_URL],
+  //   credentials: true,
+  // }
+  )
+);
+app.use(morgan('dev'));
+app.use(cookieParser());
+
+//error Middleware
+app.use(errorHandler);
+
+//import Routes
+import authRoutes from './routes/authRoutes.js';
+//
+app.use('/api',authRoutes);
+
 //Port
-const port=process.env.PORT||8000;
+const PORT=process.env.PORT||8000;
 
 app.listen(PORT,()=>{
-console.log(`app is listening to http://localhost:${port}`);
+console.log(`app is listening to http://localhost:${PORT}`);
 })

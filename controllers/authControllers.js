@@ -67,3 +67,13 @@ export const logout = (req, res, next) => {
         message: "logged out"
     })
 }
+
+export const userProfile = async (req, res, next) => {
+
+    const user = await User.findById(req.user.id).select('-password');
+
+    res.status(200).json({
+        success: true,
+        user
+    })
+}

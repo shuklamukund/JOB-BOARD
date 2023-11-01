@@ -51,7 +51,7 @@ export const updateJob = async (req, res, next) => {
 }
 
 
-//update job by id.
+//show job by id.
 export const showJobs = async (req, res, next) => {
 
     //enable search 
@@ -63,6 +63,35 @@ export const showJobs = async (req, res, next) => {
     } : {}
 
 
- 
+   // filter jobs by category ids
+   let ids = [];
+   const jobTypeCategory = await JobType.find({}, { _id: 1 });
+   jobTypeCategory.forEach(cat => {
+       ids.push(cat._id);
+   })
+
+   let cat = req.query.cat;
+   let categ = cat !== '' ? cat : ids;
+
+
+   //enable pagination
+   const pageSize = 5;
+   const page = Number(req.query.pageNumber) || 1;
+   //const count = await Job.find({}).estimatedDocumentCount();
+   const count = await Job.find({ ...keyword, jobType: categ }).countDocuments();
+
+   try {
+       const jobs = await Job.find({ ...keyword, jobType: categ }).skip(pageSize * (page - 1)).limit(pageSize)
+       res.status(200).json({
+           success: true,
+           jobs,
+           page,
+           pages: Math.ceil(count / pageSize),
+           count
+       })
+   } catch (error) {
+       next(error);
+   }
+
 }
 

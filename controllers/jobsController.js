@@ -74,6 +74,17 @@ export const showJobs = async (req, res, next) => {
    let categ = cat !== '' ? cat : ids;
 
 
+      //jobs by location
+      let locations = [];
+      const jobByLocation = await Job.find({}, { location: 1 });
+      jobByLocation.forEach(val => {
+          locations.push(val.location);
+      });
+      let setUniqueLocation = [...new Set(locations)];
+      let location = req.query.location;
+      let locationFilter = location !== '' ? location : setUniqueLocation;
+  
+
    //enable pagination
    const pageSize = 5;
    const page = Number(req.query.pageNumber) || 1;

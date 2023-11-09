@@ -8,7 +8,7 @@ import { Link, useParams } from 'react-router-dom'
 import CardElement from '../components/CardElement.js'
 import Footer from '../components/Footer.js'
 import LoadingBox from '../components/LoadingBox.js'
-import SelectComponent from '../components/SelectComponent.js'
+import SelectComponent from '../components/LoadingBox.js'
 import { jobTypeLoadAction } from '../redux/actions/jobTypeAction'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 

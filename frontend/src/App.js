@@ -20,7 +20,7 @@ import DashUsers from './pages/admin/DashUsers';
 import DashJobs from './pages/admin/DashJobs';
 
 import Register from './pages/Register';
-
+import DashCategory from './pages/admin/DashCategory';
 import { createTheme } from '@mui/material/styles';
 import { themeColors } from './theme'
 import { useSelector } from 'react-redux';
@@ -32,6 +32,7 @@ const UserInfoDashboardHOC = Layout(UserInfoDashboard);
 const AdminDashboardHOC = Layout(AdminDashboard);
 const DashUsersHOC = Layout(DashUsers);
 const DashJobsHOC = Layout(DashJobs);
+const DashCategoryHOC = Layout(DashCategory)
 
 const App = () => {
 
@@ -55,6 +56,7 @@ const App = () => {
                             <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
                             <Route path='/admin/users' element={<AdminRoute><DashUsersHOC /></AdminRoute>} />
                             <Route path='/admin/jobs' element={<AdminRoute><DashJobsHOC /></AdminRoute>} />
+                            <Route path='/admin/category' element={<AdminRoute><DashCategoryHOC /></AdminRoute>} />
                             <Route path='/user/dashboard' element={<UserRoute>< UserDashboardHOC /></UserRoute>} />
                             <Route path='/user/jobs' element={<UserRoute>< UserJobsHistoryHOC /></UserRoute>} />
                             <Route path='/user/info' element={<UserRoute>< UserInfoDashboardHOC /></UserRoute>} />

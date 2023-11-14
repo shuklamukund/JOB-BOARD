@@ -21,7 +21,7 @@ export const createJobType = async (req, res, next) => {
 //all jobs category
 export const allJobsType = async (req, res, next) => {
     try {
-        const jobT = await JobType.find();
+        const jobT = await JobType.find().sort({ createdAt: -1 });
         res.status(200).json({
             success: true,
             jobT

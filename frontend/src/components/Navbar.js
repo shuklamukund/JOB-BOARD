@@ -17,7 +17,8 @@ import { useTheme } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userLogoutAction } from '../redux/actions/userAction';
-
+import { DarkMode, LightMode } from "@mui/icons-material";
+import { toggleActionTheme } from '../redux/actions/themeAction';
 
 const pages = ['Home', 'Log In'];
 
@@ -145,9 +146,21 @@ function Navbar() {
                                 Home
                             </Link>
                         </Button>
-
+                        <Button
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block' }}>
+                            <Link to="/register" style={{ color: 'white', textDecoration: "none" }}>
+                                Register
+                            </Link>
+                        </Button>
                     </Box>
-
+                    <IconButton sx={{ mr: 4 }} onClick={() => dispatch(toggleActionTheme())}>
+                        {palette.mode === "dark" ? (
+                            <DarkMode sx={{ color: "#ffffff", fontSize: "25px" }} />
+                        ) : (
+                            <LightMode sx={{ color: "#ffffff", fontSize: "25px" }} />
+                        )}
+                    </IconButton>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -155,6 +168,14 @@ function Navbar() {
                             </IconButton>
                         </Tooltip>
                         <Menu
+                         PaperProps={{
+                            sx: {
+                                "& 	.MuiMenu-list": {
+                                    bgcolor: "primary.white",
+                                    color: "white"
+                                },
+                            }
+                        }}
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
                             anchorEl={anchorElUser}

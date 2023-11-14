@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar'
 import { jobLoadSingleAction } from '../redux/actions/jobAction'
 import Button from '@mui/material/Button'
 import { userApplyJobAction } from '../redux/actions/userAction'
-
+import { useTheme } from '@emotion/react'
 
 const SingleJob = () => {
     const dispatch = useDispatch();

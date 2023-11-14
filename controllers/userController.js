@@ -74,7 +74,7 @@ export const deleteUser = async (req, res, next) => {
 }
 
 //jobs history
-exports.createUserJobsHistory = async (req, res, next) => {
+export const createUserJobsHistory = async (req, res, next) => {
     const { title, description, salary, location } = req.body;
 
     try {

@@ -10,7 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 //import sidebar hook
 import { useProSidebar } from 'react-pro-sidebar';
-
+import { DarkMode, LightMode } from "@mui/icons-material";
+import { toggleActionTheme } from '../../redux/actions/themeAction';
+import { useTheme } from '@emotion/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -56,6 +59,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const HeaderTop = () => {
     const { collapseSidebar } = useProSidebar();
+    const { palette } = useTheme();
+    const dispatch = useDispatch();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ boxShadow: 0 }}>
@@ -77,6 +82,13 @@ const HeaderTop = () => {
                     >
                         HR APP
                     </Typography>
+                    <IconButton sx={{ mr: 4 }} onClick={() => dispatch(toggleActionTheme())}>
+                        {palette.mode === "dark" ? (
+                            <DarkMode sx={{ color: "#ffffff", fontSize: "25px" }} />
+                        ) : (
+                            <LightMode sx={{ color: "#ffffff", fontSize: "25px" }} />
+                        )}
+                    </IconButton>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

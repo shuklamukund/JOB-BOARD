@@ -19,6 +19,12 @@ import SingleJob from './pages/SingleJob';
 import DashUsers from './pages/admin/DashUsers';
 import DashJobs from './pages/admin/DashJobs';
 
+import Register from './pages/Register';
+
+import { createTheme } from '@mui/material/styles';
+import { themeColors } from './theme'
+import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 //HOC
 const UserDashboardHOC = Layout(UserDashboard);
 const UserJobsHistoryHOC = Layout(UserJobsHistory);
@@ -28,6 +34,10 @@ const DashUsersHOC = Layout(DashUsers);
 const DashJobsHOC = Layout(DashJobs);
 
 const App = () => {
+
+    
+    const { mode } = useSelector((state) => state.mode);
+    const theme = useMemo(() => createTheme(themeColors(mode)), [mode]);
 
     return (
         <>
@@ -40,6 +50,7 @@ const App = () => {
                         <Route path='/search/location/:location' element={<Home />} />
                         <Route path='/search/:keyword' element={<Home />} />
                             <Route path='/login' element={<LogIn />} />
+                            <Route path='/register' element={<Register />} />
                             <Route path='/job/:id' element={<SingleJob />} />
                             <Route path='/admin/dashboard' element={<AdminRoute><AdminDashboardHOC /></AdminRoute>} />
                             <Route path='/admin/users' element={<AdminRoute><DashUsersHOC /></AdminRoute>} />

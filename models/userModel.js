@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Schema;
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 const jobsHistorySchema = new mongoose.Schema({
 

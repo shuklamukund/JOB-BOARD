@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import { createJobType, allJobsType } from '../controllers/jobsTypeController.js';
-import { isAuthenticated } from '../middleware/auth.js';
+import { createJobType, allJobsType,updateJobType,deleteJobType } from '../controllers/jobsTypeController.js';
+import { isAuthenticated,isAdmin } from '../middleware/auth.js';
 
 
 

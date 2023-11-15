@@ -37,7 +37,7 @@ import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js'
 import jobTypeRoute from'./routes/jobsTypeRoutes.js';
 import jobRoute from'./routes/jobsRoutes.js';
-//
+//Routes middleware
 app.use('/api',authRoutes);
 app.use('/api',userRoutes);
 app.use('/api', jobTypeRoute);

@@ -62,9 +62,7 @@ const userSchema=new mongoose.Schema({
         trim:true,
         required:[true,'Email is required'],
         unique:true,
-        match:[
-            "^[A-Za-z0-9](([a-zA-Z0-9,=\.!\-#|\$%\^&\*\+/\?_`\{\}~]+)*)@(?:[0-9a-zA-Z-]+\.)+[a-zA-Z]{2,9}$"
-        ],
+        //match:[' ^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$'],
         
     },
     password:{
@@ -83,7 +81,7 @@ const userSchema=new mongoose.Schema({
 
 //password encryption
 userSchema.pre('save',async function(next){
-    if(!this.isModified){
+    if(!this.isModified('password')){
         next();
     }
     this.password=await bcrypt.hash(this.password,10)

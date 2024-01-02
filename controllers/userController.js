@@ -5,11 +5,11 @@ import ErrorResponse from'../utils/errorResponse.js';
 export const allUsers = async (req, res, next) => {
     //enable pagination
     const pageSize = 10;
-    const page = Number(req.query.pageNumber) || 1;
+    const page = parseInt(req.query.pageNumber) || 1;
     const count = await User.find({}).estimatedDocumentCount();
 
     try {
-        const users = await User.find().sort({ createdAt: -1 }).select('-password')
+        const users = await User.find().sort({ createdAt: -1 })
             .skip(pageSize * (page - 1))
             .limit(pageSize)
 
@@ -61,7 +61,7 @@ export const editUser = async (req, res, next) => {
 //delete user
 export const deleteUser = async (req, res, next) => {
     try {
-        const user = await User.findByIdAndRemove(req.params.id);
+        const user = await User.findByIdAndDelete(req.params.id);
         res.status(200).json({
             success: true,
             message: "user deleted"

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const { ObjectId } = mongoose.Schema;//user se ObjectId le rahe hai
+const {Types,ObjectId } = mongoose.Schema;//user se ObjectId le rahe hai
 
 
 const jobSchema = new mongoose.Schema({
@@ -29,12 +29,12 @@ const jobSchema = new mongoose.Schema({
         default: true
     },
     jobType: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: "JobType",
         required: true
     },
     user: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: "User",
         required: true
     },

@@ -1,5 +1,5 @@
 import mongoose  from 'mongoose';
-const { ObjectId } = mongoose.Schema;
+const {Types, ObjectId } = mongoose.Schema;
 
 
 const jobTypeSchema = new mongoose.Schema({
@@ -12,7 +12,7 @@ const jobTypeSchema = new mongoose.Schema({
     },
 
     user: {
-        type: ObjectId,
+        type: Types.ObjectId,
         ref: "User",
         required: true
     },
@@ -21,4 +21,4 @@ const jobTypeSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-export default mongoose.model("JobType", jobTypeSchema);
+export default mongoose.model("JobType", jobTypeSchema); 

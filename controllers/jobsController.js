@@ -40,7 +40,7 @@ export const singleJob = async (req, res, next) => {
 //update job by id.
 export const updateJob = async (req, res, next) => {
     try {
-        const job = await Job.findByIdAndUpdate(req.params.job_id, req.body, { new: true }).populate('jobType', 'jobTypeName').populate('user', 'firstName lastName');
+        const job = await Job.findByIdAndUpdate(req.params.job_id, req.body, { new: true }).populate('jobType', 'jobTypeName');
         res.status(200).json({
             success: true,
             job
@@ -87,7 +87,7 @@ export const showJobs = async (req, res, next) => {
 
    //enable pagination
    const pageSize = 5;
-   const page = Number(req.query.pageNumber) || 1;
+   const page = parseInt(req.query.pageNumber) || 1;
    //const count = await Job.find({}).estimatedDocumentCount();
    const count = await Job.find({ ...keyword, jobType: categ }).countDocuments();
 

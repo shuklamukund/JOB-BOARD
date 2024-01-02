@@ -4,7 +4,7 @@ class ErrorResponse extends Error {
   
       this.codeStatus = codeStatus;
   
-    //   Error.captureStackTrace(this, this.constructor);
+      Error.captureStackTrace(this, this.constructor);
     }
   }
   

@@ -46,6 +46,7 @@ const App = () => {
 
     return (
         <>
+        <ToastContainer/>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <ProSidebarProvider>

@@ -1,47 +1,8 @@
 import mongoose from 'mongoose';
-const { ObjectId } = mongoose.Schema;
+const { ObjectId,Types } = mongoose.Schema;
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
-const jobsHistorySchema = new mongoose.Schema({
-
-    title: {
-        type: String,
-        trim: true,
-        maxlength: 70,
-    },
-
-    description: {
-        type: String,
-        trim: true
-    },
-    salary: {
-        type: String,
-        trim: true,
-    },
-    location: {
-        type: String,
-    },
-    interviewDate: {
-        type: Date,
-    },
-    applicationStatus: {
-        type: String,
-        enum: ['pending', 'accepted', 'rejected'],
-        default: 'pending'
-    },
-
-    user: {
-        type: ObjectId,
-        ref: "User",
-        required: true
-    },
-
-
-
-}, { timestamps: true })
-
-
+import jobsHistory from './jobHistory.js'
 const userSchema=new mongoose.Schema({
     firstName:{
         type:String,
@@ -70,7 +31,13 @@ const userSchema=new mongoose.Schema({
         trim:true,
         required:[true,'Password is required'],
         minlength:[6,'Weak password'],
+        select:false,
 
+    },
+
+    jobsHistory:{
+        type:Types.ObjectId,
+        ref:'jobsHistory',
     },
     role:{
         type:Number,

@@ -21,12 +21,12 @@ const SearchInputEl = () => {
         if (search.trim()) {
             navigate(`/search/${search}`);
         } else {
-            navigate('/Home');
+            navigate('/*');
         }
         actions.resetForm();
     }
 
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting } = useFormik({
         initialValues: {
             search: '',
         },

@@ -32,7 +32,7 @@ const SidebarAdm = () => {
         dispatch(userLogoutAction());
         window.location.reload(true);
         setTimeout(() => {
-            navigate('/');
+            navigate('/Home');
         }, 500)
     }
 
@@ -90,9 +90,9 @@ const SidebarAdm = () => {
                                         <MenuItem component={<Link to="/admin/category" />} icon={<CategoryIcon />}> Category </MenuItem>
                                     </> :
                                     <>
-                                        <MenuItem component={<Link to="/user/dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
+                                        <MenuItem component={<Link to="/Dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
                                         <MenuItem component={<Link to="/user/jobs" />} icon={<WorkHistoryIcon />}> Applied Jobs </MenuItem>
-                                        <MenuItem component={<Link to="/user/info" />} icon={<Person3Icon />}> Personal Info </MenuItem>
+                                        <MenuItem component={<Link to="/Profile" />} icon={<Person3Icon />}> Personal Info </MenuItem>
                                     </>
                             }
 

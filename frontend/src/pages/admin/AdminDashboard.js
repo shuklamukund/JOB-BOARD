@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import StatComponent from '../../components/StartComponent';
+import StatComponent from '../../components/StatComponent';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import WorkIcon from '@mui/icons-material/Work';
 import CategoryIcon from '@mui/icons-material/Category';

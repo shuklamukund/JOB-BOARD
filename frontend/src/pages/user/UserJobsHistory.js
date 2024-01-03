@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import CardElement from '../../components/CardElement'
 import { userProfileAction } from '../../redux/actions/userAction'
+import { jobLoadSingleAction } from '../../redux/actions/jobAction'
 
 const UserJobsHistory = () => {
     const { user } = useSelector(state => state.userProfile);
@@ -28,6 +29,8 @@ const UserJobsHistory = () => {
                                 location={history.location}
                             />
                         ))
+
+                        
                     }
                 </Box>
             </Box>

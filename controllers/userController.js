@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import User from '../models/userModel.js';
 import ErrorResponse from'../utils/errorResponse.js';
 
@@ -89,6 +90,9 @@ export const createUserJobsHistory = async (req, res, next) => {
                 location,
                 user: req.user._id
             }
+
+            currentUser.jobsHistory=currentUser.jobsHistory || [];
+
             currentUser.jobsHistory.push(addJobHistory);
             await currentUser.save();
         }

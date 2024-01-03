@@ -29,11 +29,11 @@ const jobsHistorySchema = new mongoose.Schema({
         default: 'pending'
     },
 
-    user: {
+    user: [{
         type:Types. ObjectId,
         ref: "User",
         required: true
-    },
+    }],
 
 
 

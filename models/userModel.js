@@ -35,10 +35,10 @@ const userSchema=new mongoose.Schema({
 
     },
 
-    jobsHistory:{
+    jobsHistory:[{
         type:Types.ObjectId,
         ref:'jobsHistory',
-    },
+    }],
     role:{
         type:Number,
         default:0

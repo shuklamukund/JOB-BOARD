@@ -5,7 +5,8 @@ import { Navigate } from 'react-router-dom';
 const UserRoute = ({ children }) => {
 
     const { userInfo } = useSelector((state) => state.signIn);
-    return userInfo ? children : <Navigate to="/" />;
+    return userInfo ? children : <Navigate to="/Home" />;
 }
 
 export default UserRoute
+

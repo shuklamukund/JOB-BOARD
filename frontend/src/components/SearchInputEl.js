@@ -21,7 +21,7 @@ const SearchInputEl = () => {
         if (search.trim()) {
             navigate(`/search/${search}`);
         } else {
-            navigate('/');
+            navigate('/Home');
         }
         actions.resetForm();
     }

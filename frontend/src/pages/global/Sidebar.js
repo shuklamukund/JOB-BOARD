@@ -82,10 +82,10 @@ const SidebarAdm = () => {
 
                         >
                             {
-                                userInfo && userInfo.role === 1 ?
+                                userInfo && userInfo.user.role === 1 ?
                                     <>
-                                        <MenuItem component={<Link to="/admin/dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
-                                        <MenuItem component={<Link to="/admin/users" />} icon={<GroupAddIcon />}> Users </MenuItem>
+                                        <MenuItem component={<Link to="/Dashboard" />} icon={<DashboardIcon />}> Dashboard </MenuItem>
+                                        <MenuItem component={<Link to="/Profile" />} icon={<GroupAddIcon />}> Users </MenuItem>
                                         <MenuItem component={<Link to="/admin/jobs" />} icon={<WorkIcon />}> Jobs </MenuItem>
                                         <MenuItem component={<Link to="/admin/category" />} icon={<CategoryIcon />}> Category </MenuItem>
                                     </> :

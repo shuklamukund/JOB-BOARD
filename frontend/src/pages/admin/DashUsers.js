@@ -35,7 +35,7 @@ const DashUsers = () => {
 
         {
             field: 'email',
-            headerName: 'E_mail',
+            headerName: 'Email',
             width: 150,
         },
 

@@ -15,6 +15,9 @@ const SingleJob = () => {
     const dispatch = useDispatch();
     const { singleJob, loading } = useSelector(state => state.singleJob)
     const { id } = useParams();
+
+    const { userInfo } = useSelector((state) => state.signIn);
+
     useEffect(() => {
         dispatch(jobLoadSingleAction(id));
     }, [id]);
@@ -68,11 +71,19 @@ const SingleJob = () => {
                                         </Card>
                                 }
                             </Box>
+
+                           { !userInfo.user.role===1 ?(
+
+
                             <Box sx={{ flex: 1, p: 2 }}>
                                 <Card sx={{ p: 2 }}>
                                     <Button onClick={applyForAJob} sx={{ fontSize: "13px" }} variant='contained'>Apply for this Job</Button>
                                 </Card>
                             </Box>
+                           )
+                            : ""
+
+                           }
 
                         </Stack>
 

@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 const UserInfoDashboard = () => {
     const { user } = useSelector(state => state.userProfile);
+    
     const { palette } = useTheme();
     return (
         <>

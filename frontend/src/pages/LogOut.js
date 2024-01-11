@@ -14,6 +14,7 @@ const LogOut=()=>{
         //window.location.reload(true);
         setTimeout(() => {
             navigate('/Home');
+            
         }, 500)
     },[])
 
